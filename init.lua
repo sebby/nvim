@@ -22,16 +22,12 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-  },
-  {
     "ellisonleao/gruvbox.nvim", name = "gruvbox", priority = 1000, config = true,
   },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-lua/plenary.nvim' , 'nvim-tree/nvim-web-devicons' }
   },
   {
     "nvim-treesitter/nvim-treesitter", build = ":TSUpdate",
@@ -48,7 +44,6 @@ local opts = {}
 
 require("lazy").setup(plugins, opts)
 
-require("alpha").setup(require("alpha.themes.dashboard").config)
 require("gruvbox").setup()
 vim.cmd.colorscheme "gruvbox"
 
