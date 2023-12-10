@@ -25,7 +25,7 @@ local plugins = {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
   { "ellisonleao/gruvbox.nvim", name = "gruvbox", priority = 1000 , config = true},
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -50,6 +50,5 @@ config.setup({
   indent = { enable = true },
 })
 
-require("catppuccin").setup()
 require("gruvbox").setup()
 vim.cmd.colorscheme "gruvbox"
