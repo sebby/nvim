@@ -3,7 +3,9 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set list listchars=tab:>\\ ,trail:-,eol:↲")
-vim.g.mapleader = " "
+vim.g.mapleader = ", "
+vim.g.maplocalleader = " "
+vim.o.guifont = "Jetbrains Mono"
 
 vim.o.number = true
 vim.o.relativenumber = true
@@ -40,21 +42,39 @@ local plugins = {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/nvim-cmp' },
   { 'L3MON4D3/LuaSnip' },
+  {
+    'tjdevries/gruvbuddy.nvim',
+    dependencies =
+      {
+        'tjdevries/colorbuddy.vim'
+      }
+  },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+  }
+
 }
 local opts = {}
 
 require("lazy").setup(plugins, opts)
 
-require("gruvbox").setup()
-vim.cmd.colorscheme "gruvbox"
 
+-- START colors 
+-- require("gruvbox").setup()
+-- vim.cmd.colorscheme "gruvbox"
+require('colorbuddy').colorscheme('gruvbuddy')
+ -- END colors 
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 local config = require("nvim-treesitter.configs")
 config.setup({
-  ensure_installed = { "lua", "javascript" },
+  ensure_installed = { "lua" },
   highlight = { enable = true },
   indent = { enable = true },
 })
